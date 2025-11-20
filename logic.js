@@ -158,11 +158,21 @@ bookBtn.addEventListener("click", (e) => {
         return;
     }
 
+    // 👉 EMAIL VALIDATION ADDED HERE
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(email.value.trim())) {
+        successMsg.style.display = "none";
+        bookWarning.innerText = "Please enter a valid email address!";
+        bookWarning.style.display = "block";
+        return;
+    }
+
     // ---- SUCCESS ----
     bookWarning.style.display = "none";
     successMsg.style.display = "block";
 
-    // ✨ 3 seconds ke baad message hide hoga
+    // ✨ 3 seconds hide
     setTimeout(() => {
         successMsg.style.display = "none";
     }, 3000);
